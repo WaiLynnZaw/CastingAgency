@@ -1,5 +1,6 @@
 {
   "domain": "dev-a2hj2l3zh36odzdo.us.auth0.com",
   "clientId": "EJBVwho7MdcfuohkZ0GWYq7lzQo5C2lT",
-  "audience": "casting-agency"
+  "audience": "casting-agency",
+  "baseUrl": "https://castingagency.onrender.com"
 }

@@ -1,6 +1,12 @@
+
+
+# Casting Agency React Application
+
+This application is based on the [Auth0 Sample React app.](https://github.com/auth0-samples/auth0-react-samples/tree/master/Sample-01)
+
 ## Project setup
 
-Use `yarn` to install the project dependencies:
+From `frontend` folder, use `yarn` to install the project dependencies:
 
 ```bash
 yarn install
@@ -8,37 +14,14 @@ yarn install
 
 ## Configuration
 
-### Build an API
+### Configure credentials
 
-For the ["call an API"](https://auth0.com/docs/quickstart/spa/react/02-calling-an-api) page to work, you will need to [create an API](https://auth0.com/docs/apis) using the [management dashboard](https://manage.auth0.com/#/apis). This will give you an API identifier that you can use in the `audience` configuration field below.
+The project needs to be configured with your Auth0 domain and client ID in order for the authentication flow to work.
 
-If you do not wish to use an API or observe the API call working, you should not specify the `audience` value in the next step. Otherwise, you will receive a "Service not found" error when trying to authenticate.
+To test with your own credentials, need to update in 
+`src/auth_config.json`
 
-### Defined credentials
-
-The project must be signed in with the below credential which are pre-defined users for the testing purpose.
-
-`Executive Producer`
-```
-producer@gmail.com
-Producer2024
-```
-
-`Director`
-```
-director@gmail.com
-Director2024
-```
-
-`Assistant`
-```
-assistant@gmail.com
-Assistant2024
-```
-
-**Note**: Do not specify a value for `audience` here if you do not wish to use the API part of the sample.
-
-## Run the sample
+## Run the app
 
 ### Compile and hot-reload for development
 
@@ -54,10 +37,4 @@ yarn run dev
 
 ```bash
 yarn run build
-```
-
-### Run your tests
-
-```bash
-yarn run test
 ```

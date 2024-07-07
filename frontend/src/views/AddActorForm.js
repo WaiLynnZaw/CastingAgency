@@ -5,9 +5,9 @@ import { getConfig } from '../config';
 import { useHistory } from 'react-router-dom';
 import usePermissions from '../utils/permissions';
 import Loading from "../components/Loading";
-
+import authConfig from "../auth_config.json"
 export const AddActorForm = () => {
-  const { apiOrigin = "https://casting-agency-api-v0sn.onrender.com" } = getConfig();
+  const { apiOrigin = authConfig.baseUrl } = getConfig();
   const { getAccessTokenSilently } = useAuth0();
   const { hasPermission } = usePermissions();
   const history = useHistory();
