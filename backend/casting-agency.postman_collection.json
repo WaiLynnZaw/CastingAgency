@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "e91cfe3d-b0c6-49bd-b0cd-160f8251a90a",
+		"name": "CastingAgency",
+		"description": "To test the apis, please replace your auth_token in Variables",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34838175"
+	},
+	"item": [
+		{
+			"name": "GetMovies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/movies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMovieById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/movies/13",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetActors",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/actors",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"actors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetActorById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/actors/7",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"actors",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddActor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Mocha\",\n    \"age\": 36,\n    \"gender\": \"Female\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/actors",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"actors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteActor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/actors/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"actors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteMovie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/movies/3",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateActor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Mocha\",\n    \"age\": 37,\n    \"gender\": \"Female\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/actors/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"actors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddMovie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"We Bare Bears\",\n    \"release_date\": \"2023-06-06\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/movies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateMovie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"We Bare Bears - Grizz\",\n    \"release_date\": \"2023-06-06\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/movies/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://castingagency.onrender.com"
+		},
+		{
+			"key": "auth_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRkWTVMMlIxbkZoM1BBVTdPZG0tRyJ9.eyJpc3MiOiJodHRwczovL2Rldi1hMmhqMmwzemgzNm9kemRvLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExNDIzNDk0NzIwNjM3Mzc2NDkxMCIsImF1ZCI6WyJjYXN0aW5nLWFnZW5jeSIsImh0dHBzOi8vZGV2LWEyaGoybDN6aDM2b2R6ZG8udXMuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTcyMDI3MzEzNSwiZXhwIjoxNzIwMzU5NTM1LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiYXpwIjoiRUpCVndobzdNZGNmdW9oa1owR1dZcTdselFvNUMybFQiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3IiLCJkZWxldGU6bW92aWUiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9yIiwicGF0Y2g6bW92aWUiLCJwb3N0OmFjdG9ycyIsInBvc3Q6bW92aWVzIl19.I6-OPaZQGMqG6uD0sePbzgskBIO5uTNpZVYDtZfGfHS3Z6_Q2wZ9eD_Lke2C6oScpH9Rh378TkP6LXaBOUkc_QGGYSO_llm6b3-FsI9zHCfNxAMthlTcjhzUiQ1p2HshNp0mSLvau_foGbfFR8UIRD9C4z0ianpWD1bhgCqiKxhSd4YV3eAzOocGtCHl4WEP4T3SeOPrDBUwW3_xTaoHYNoLDUp2dXg739fULuXmUdNQQ-vFrA2tllQdk32xa7qk1zE-pRSB4FcW9pBvf_SW4R2dG62L02FfJoJ61xeFFTIGknQ0uesPihseD7eF6KNSQ1CxpWhvWKGzsrij6pvGlg"
+		}
+	]
+}
