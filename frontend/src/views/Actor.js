@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Swal from 'sweetalert2';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { getConfig } from '../config';
@@ -13,24 +13,24 @@ export const ActorComponent = () => {
   const [actors, setActors] = useState([]);
   const history = useHistory();
 
-  useEffect(() => {
-    const fetchActors = async () => {
-      try {
-        const token = await getAccessTokenSilently();
-        const response = await fetch(`${apiOrigin}/actors`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-        setActors(data.actors);
-      } catch (error) {
-        console.error('Error fetching actors:', error);
-      }
-    };
+  const fetchActors = useCallback(async () => {
+    try {
+      const token = await getAccessTokenSilently();
+      const response = await fetch(`${apiOrigin}/actors`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      setActors(data.actors);
+    } catch (error) {
+      console.error('Error fetching actors:', error);
+    }
+  }, [apiOrigin, getAccessTokenSilently]);
 
-    fetchActors();
-  }, [apiOrigin, getAccessTokenSilently, hasPermission]);
+  useEffect(() => {
+      fetchActors();
+  }, [fetchActors]);
 
   const handleDeleteActor = async (id) => {
     if (!hasPermission('delete:actor')) {

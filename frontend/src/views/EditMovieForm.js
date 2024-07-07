@@ -32,8 +32,8 @@ export const EditMovieForm = () => {
         }
 
         const movie = await response.json();
-        setTitle(movie.title);
-        setReleaseDate(movie.release_date);
+        setTitle(movie.movie.title);
+        setReleaseDate(movie.movie.release_date);
         setLoading(false);
       } catch (error) {
         Swal.fire({

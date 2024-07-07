@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Swal from 'sweetalert2';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { getConfig } from '../config';
@@ -12,27 +12,25 @@ export const MovieComponent = () => {
   const { hasPermission } = usePermissions();
   const [movies, setMovies] = useState([]);
   const history = useHistory();
-  // const [selectedMovie, setSelectedMovie] = useState(null);
-  // const [isEditing, setIsEditing] = useState(false);
-  
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const token = await getAccessTokenSilently();
-        const response = await fetch(`${apiOrigin}/movies`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-        setMovies(data.movies);
-      } catch (error) {
-        console.error('Error fetching movies:', error);
-      }
-    };
 
-    fetchMovies();
-  }, [apiOrigin, getAccessTokenSilently, hasPermission]);
+  const fetchMovies = useCallback(async () => {
+    try {
+      const token = await getAccessTokenSilently();
+      const response = await fetch(`${apiOrigin}/movies`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      setMovies(data.movies);
+    } catch (error) {
+      console.error('Error fetching movies:', error);
+    }
+  }, [apiOrigin, getAccessTokenSilently]);
+
+  useEffect(() => {
+      fetchMovies();
+  }, [fetchMovies]);
 
   const handleDeleteMovie = async (id) => {
     if (!hasPermission('delete:movie')) {
@@ -84,7 +82,6 @@ export const MovieComponent = () => {
       <h1>Movies</h1>
       <div style={{ marginBottom: '18px' }}>
         {hasPermission('post:movies') && (
-          // <button onClick={() => setIsEditing(true)}>Add Movie</button>
           <button onClick={() => history.push('/add-movie')}>Add Movie</button>
         )}
       </div>
@@ -109,15 +106,6 @@ export const MovieComponent = () => {
                   <td>{movie.release_date}</td>
                   <td className="text-right">
                     {hasPermission('patch:movie') && (
-                      // <button
-                      //   onClick={() => {
-                      //     setSelectedMovie(movie);
-                      //     setIsEditing(true);
-                      //   }}
-                      //   className="button muted-button"
-                      // >
-                      //   Edit
-                      // </button>
                       <button
                         onClick={() => history.push(`/edit-movie/${movie.id}`)}
                         className="button muted-button"
@@ -149,8 +137,6 @@ export const MovieComponent = () => {
     </div>
   );
 };
-
-// export default MovieComponent;
 
 export default withAuthenticationRequired(MovieComponent, {
   onRedirecting: () => <Loading />,
